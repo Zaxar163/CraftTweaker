@@ -55,7 +55,6 @@ public class RegisterZenClassesTask extends DefaultTask {
 		
 		List<String> classNames = new ArrayList<String>();
 		List<OnRegisterMethod> onRegisterMethods = new ArrayList<OnRegisterMethod>();
-        System.out.println(inputDir);
 		iterate(inputDir, null, classNames, onRegisterMethods);
 		
 		String fullClassName = className.replace('.', '/');

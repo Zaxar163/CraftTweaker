@@ -22,8 +22,8 @@ dependencies {
 
 task makeRegistry(type: RegisterZenClassesTask) {
     dependsOn tasks.compileJava
-	inputDir = file('build/classes/java')
-	outputDir = file('build/classes/java')
+	inputDir = file('build/classes/java/main')
+	outputDir = file('build/classes/java/main')
 	className = 'minetweaker.mc1710.MineTweakerRegistry'
 }
 

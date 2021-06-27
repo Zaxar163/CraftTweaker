@@ -12,8 +12,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 task makeRegistry(type: RegisterZenClassesTask) {
-	inputDir = file('build/classes/main')
-	outputDir = file('build/classes/main')
+    dependsOn tasks.compileJava
+	inputDir = file('build/classes/java/main')
+	outputDir = file('build/classes/java/main')
 	className = 'minetweaker.ClassRegistry'
 }
 
