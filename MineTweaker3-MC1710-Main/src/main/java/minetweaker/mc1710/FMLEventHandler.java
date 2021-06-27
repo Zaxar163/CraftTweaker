@@ -1,6 +1,5 @@
 package minetweaker.mc1710;
 
-import minetweaker.MineTweakerAPI;
 import minetweaker.MineTweakerImplementationAPI;
 import minetweaker.api.event.PlayerCraftedEvent;
 import minetweaker.api.event.PlayerLoggedInEvent;
@@ -8,10 +7,8 @@ import minetweaker.api.event.PlayerLoggedOutEvent;
 import minetweaker.api.event.PlayerSmeltedEvent;
 import minetweaker.api.minecraft.MineTweakerMC;
 import minetweaker.api.player.IPlayer;
-import minetweaker.mc1710.network.MineTweakerLoadScriptsPacket;
 import minetweaker.mc1710.recipes.MCCraftingInventory;
 import minetweaker.mc1710.recipes.MCRecipeManager;
-import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 
@@ -22,11 +19,9 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 public class FMLEventHandler {
 	@SubscribeEvent
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent ev) {
-		if (ev.player instanceof EntityPlayerMP) {
-			EntityPlayerMP player = (EntityPlayerMP) ev.player;
-			MineTweakerMod.NETWORK.sendTo(new MineTweakerLoadScriptsPacket(MineTweakerAPI.tweaker.getScriptData()), player);
-		}
-
+		//if (ev.player instanceof EntityPlayerMP) {
+		//	MineTweakerMod.NETWORK_HANDLER.playerLogin((EntityPlayerMP) ev.player);
+		//}
 		MineTweakerImplementationAPI.events.publishPlayerLoggedIn(new PlayerLoggedInEvent(MineTweakerMC.getIPlayer(ev.player)));
 	}
 

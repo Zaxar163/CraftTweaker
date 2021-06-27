@@ -17,3 +17,22 @@ repositories {
 		url = "https://oss.sonatype.org/content/repositories/snapshots/"
 	}
 }
+
+repositories {
+    maven {
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        name = "gt"
+        url = "https://gregtech.overminddl1.com/"
+    }
+    maven {
+        url = "http://maven.ic2.player.to/"
+        name = "ic2"
+    }
+    maven {
+        name = "jitpack"
+        url = "https://jitpack.io"
+    }
+}

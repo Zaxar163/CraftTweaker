@@ -38,6 +38,14 @@ public class RegisterZenClassesTask extends DefaultTask {
 	@OutputDirectory
 	public File outputDir = null;
 	
+    public void setInputDir(File inputDir) {
+        this.inputDir = inputDir;
+    }
+
+    public void setOutputDir(File inputDir) {
+        this.outputDir = inputDir;
+    }
+
 	@Input
 	public String className;
 	
