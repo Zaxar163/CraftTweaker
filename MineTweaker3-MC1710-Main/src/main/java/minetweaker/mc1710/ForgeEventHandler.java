@@ -7,6 +7,8 @@
 package minetweaker.mc1710;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import minetweaker.*;
 import minetweaker.api.entity.*;
 import minetweaker.api.formatting.IFormattedText;
@@ -15,10 +17,14 @@ import minetweaker.api.minecraft.MineTweakerMC;
 import minetweaker.api.tooltip.IngredientTooltips;
 import minetweaker.mc1710.formatting.IMCFormattedString;
 import minetweaker.mc1710.item.*;
+import minetweaker.runtime.IScriptProvider;
+import minetweaker.runtime.providers.ScriptProviderCascade;
+import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.*;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -31,6 +37,16 @@ import java.util.*;
  * @author Stan
  */
 public class ForgeEventHandler {
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onGuiOpened(GuiOpenEvent ev) {
+		if (ev.gui != null && ev.gui instanceof GuiConnecting) {
+			IScriptProvider cascaded = new ScriptProviderCascade(MineTweakerMod.INSTANCE.scriptsIMC, MineTweakerMod.INSTANCE.scriptsGlobal);
+			MineTweakerImplementationAPI.setScriptProvider(cascaded);
+			MineTweakerImplementationAPI.reload();
+		}
+	}
+
     @SubscribeEvent
     public void onPlayerInteract(PlayerInteractEvent ev) {
         minetweaker.api.event.PlayerInteractEvent event = new minetweaker.api.event.PlayerInteractEvent(

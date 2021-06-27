@@ -2,6 +2,7 @@ import minetweaker.tasks.RegisterZenClassesTask;
 
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'eclipse'
 
 version = ext.mineTweakerVersion
 

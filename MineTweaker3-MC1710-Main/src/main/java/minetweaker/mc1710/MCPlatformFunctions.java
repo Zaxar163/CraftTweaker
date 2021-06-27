@@ -11,7 +11,6 @@ import minetweaker.api.chat.IChatMessage;
 import minetweaker.api.item.IItemDefinition;
 
 import minetweaker.mc1710.item.MCItemDefinition;
-import minetweaker.mc1710.network.MineTweakerLoadScriptsPacket;
 import minetweaker.mc1710.chat.MCChatMessage;
 import net.minecraft.item.Item;
 
@@ -32,7 +31,7 @@ public class MCPlatformFunctions implements IPlatformFunctions {
 
 	@Override
 	public void distributeScripts(byte[] data) {
-		MineTweakerMod.NETWORK.sendToAll(new MineTweakerLoadScriptsPacket(data));
+		throw new IllegalArgumentException("Runtime script reloading is not supported!!!");
 	}
 
 	@Override
